@@ -1,5 +1,5 @@
-% This file contains all the variables that should be modified at beginning of every cruise - this is for DY151
-% in May/June 2022. 
+% This file contains all the variables that should be modified at beginning of every cruise - this is for DY157
+% in Feb/March 2023. Inital processing on the Discovery was done by Federioc Ienna, post-cruise analysis was done by Tom Jordan: tjor@pml.ac.uk
 
 %-----------------------------
  
@@ -14,20 +14,20 @@ graphics_toolkit("gnuplot");
 CRUISE = "AMT30";
 WAP_ROOT = CRUISE; % tjor: `root" part of WAP file - capitals for DY151
 
-
 %-----------------------------
 % Variables to be changed during cruise according to specific setups and user needs
 %
-% Dates - FI: for testing purposes, just using two middle days
-%Initial date = '20230301'; % jday=060 (20230301) is first day of DY157 cruise 
-%End date = '20230301'; % jday=061 (20220302) is final day of DY157 cruise 
+# Dates - FI: for testing purposes, just using two middle days
+# Initial_date = '20230301'; % jday=060 (20230301) is first day of DY157 cruise 
+# End_date = '20230301'; % jday=061 (20220302) is final day of DY157 cruise 
 
 % Set subdirectories, ini/end dates and WAPhours - code is run by commenting/uncommenting each case
 
 % Step 1: `default' - run 1 
 UWAY_WAP_SUBDIR = "/"; % Leave with simple '/' if no special case
 inidate = "20230222"; % jday=053 first day of default config. 1st WAP hour = 16
-enddate = "20230325"; % jday=072 last full day of default config. 
+enddate = "20230325"
+#enddate = "20230325"; % jday=072 last full day of default config. 
 WAPhour = "006"; % tjor: `processes all days with 0XXth hour of data present" 
 
 % Step 1: `default' - run 2 - catches final day of data. 
@@ -44,7 +44,7 @@ WAPhour = "006"; % tjor: `processes all days with 0XXth hour of data present"
 
 # Step 1: `with_ACS167' - run 2 
 # UWAY_WAP_SUBDIR = "with_ACS167/"; 
-# inidate = "20220521";
+# inidate = "20220521";inidate
 # enddate = "20220523"; 
 # WAPhour = "020"; 
 
@@ -112,12 +112,12 @@ strcmp(UWAY_WAP_SUBDIR, "/") == 1 % tjor: this is the `default" config (i.e. wit
 
 %-----------------------------
 % Paths
- MAIN_PATH = "/Users/thefed/Insync/fed@udel.edu/Working Folder/AMT/Rigs/IOP_Underway/Full_Processing/";
-##MAIN_PATH = "/data/datasets/cruise_data/active/DY151/"; 
+
+MAIN_PATH = "/data/datasets/cruise_data/active/AMT30/Optics_all/"; 
  fflush(stdout);
 % MAIN_PATH = [MAIN_PATH, "/Data/", CRUISE,"/"];     % Root directory for current AMT cruise
 PATH_DATA = [MAIN_PATH, "Data/"];        % Directory with all raw and wapped data
-PATH_SOURCE = [MAIN_PATH, "Source/Code_tjor/DY157_Underway-main/Underway"];% Directory with all source code
+PATH_SOURCE = [MAIN_PATH, "Source"];% Directory with all source code
 OUT_PROC = [MAIN_PATH, "Processed/"];    % Output directory for processed oct and mat files
 OUT_FIGS = [MAIN_PATH, "Figures/"];      % Output directory for figures
 
@@ -140,8 +140,8 @@ D_CAL_FILES = [PATH_DATA, UWAY_DIR, "Calibration_files/"];
 
 %-----------------------------
 % ACS calibration file
-##ACS_CAL_FILE_NAME = "acs122.dev"; % tjor -  2019 was latest callibration. For now, don't consider ACS167
-ACS_CAL_FILE_NAME = "acs167.dev"; % 167 version, just in case it's needed
+ACS_CAL_FILE_NAME = "acs122.dev"; % 
+#ACS_CAL_FILE_NAME = "acs167.dev"; % 
 %-----------------------------
 
 

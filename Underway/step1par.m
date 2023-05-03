@@ -3,9 +3,10 @@ function step1par(jday_var)
 tic
 
    % Load paths and common variables
-   # run('input_parameters.m') 
-   run('../input_parameters_AMT30_FI.m')
 
+   run('../Input_parameters_AMT30_FI.m')
+  # run('/Input_parameters_AMT30_FI.m')
+   
    din = [PATH_DATA UWAY_DIR];
    wapdir = [din DATA_WAPPED UWAY_WAP_SUBDIR]
    flowdir = [din,DATA_FLOW];
@@ -24,6 +25,7 @@ tic
    mm = strdates(1,5:6);
    dd = strdates(1,7:8);
    
+  
    strdate = strdates(jdays== jday_var,:);
 
    doy = sprintf('%d',jday_var);
@@ -79,6 +81,7 @@ tic
                %-------------------------------------
                acs.raw = bindata_new(strdate, acsNoWL*2);
                acs.anc = bindata_new(strdate, 5);
+               
            case 'acs2'
                %-------------------------------------
                % TO DO: MOVE INTO input_parameters
@@ -155,6 +158,7 @@ tic
                   acs.T_bins = tmp_acs.T_bins;
                   acs.anc = bindata_merge(acs.anc, tmp_acs.time, tmp_acs.anc);
                   acs.raw = bindata_merge(acs.raw, tmp_acs.time, tmp_acs.raw(:,:));
+                
                  % Save to output var
                  WAPvars.acs = acs;
 

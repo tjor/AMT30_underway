@@ -8,7 +8,7 @@ function [bindata] = bindata_merge(bindata, time, data)
 %     plot(time, 'b')
 %     stop
     
-    
+  
        if ~isempty(time)
     
         % Loop through each time bin and find data that belongs... e.g.
